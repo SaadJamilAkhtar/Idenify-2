@@ -42,10 +42,11 @@ built_in_apps = [
 
 third_party_apps = [
     'cloudinary',
+    'crispy_forms',
 ]
 
 custom_apps = [
-
+    'main',
 ]
 
 INSTALLED_APPS = built_in_apps + third_party_apps + custom_apps
@@ -135,6 +136,8 @@ MEDIA_URL = '/media/'
 # ________________________________________________________________________________________
 # APP CONFIGS
 # ________________________________________________________________________________________
+
+# CLOUDINARY CONFIG
 if env('USE_CLOUDINARY_STORAGE'):
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': env('CLOUDINARY_STORAGE_CLOUD_NAME'),
@@ -142,3 +145,6 @@ if env('USE_CLOUDINARY_STORAGE'):
         'API_SECRET': env('CLOUDINARY_STORAGE_API_SECRET'),
     }
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# CRISPY FORM CONFIG
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
