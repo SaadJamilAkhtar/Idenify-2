@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+built_in_apps = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,6 +39,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+third_party_apps = [
+    'cloudinary',
+]
+
+custom_apps = [
+
+]
+
+INSTALLED_APPS = built_in_apps + third_party_apps + custom_apps
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -121,3 +131,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# ________________________________________________________________________________________
+# APP CONFIGS
+# ________________________________________________________________________________________
+if env('USE_CLOUDINARY_STORAGE'):
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': env('CLOUDINARY_STORAGE_CLOUD_NAME'),
+        'API_KEY': env('CLOUDINARY_STORAGE_API_KEY'),
+        'API_SECRET': env('CLOUDINARY_STORAGE_API_SECRET'),
+    }
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
