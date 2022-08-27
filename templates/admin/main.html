@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site_title }} - Idenify</title>
+    <link rel="icon" href="{% static 'assets/imgs/logo/logo.png' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconly/bold.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/vendors/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/app.css' %}">
+    <link rel="shortcut icon" href="{% static 'assets/imgs/favicon.svg' %}" type="image/x-icon">
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body>
+<div id="app">
+    {% include 'admin/nav.html' %}
+    <div id="main">
+        <header class="mb-3">
+            <a href="#" class="burger-btn d-block d-xl-none">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+        </header>
+
+        <div class="page-heading">
+            <h3>{{ page_title }}</h3>
+        </div>
+        <div class="page-content">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <footer>
+            <div class="footer clearfix mb-0 text-muted">
+                <div class="float-start">
+                    <p>2021 &copy; Idenify</p>
+                </div>
+                <div class="float-end">
+
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="{% static 'assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'assets/vendors/apexcharts/apexcharts.js' %}"></script>
+<script src="{% static 'assets/js/pages/dashboard.js' %}"></script>
+
+<script src="{% static 'assets/js/main.js' %}"></script>
+{% block script %}
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+{% extends 'admin/main.html' %}
+{% load crispy_forms_tags %}
+{% block style %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+{% endblock %}
+{% block dashboard %}
+    active
+{% endblock %}
+{% block body %}
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        <div class="row">
+                            <div class="col-lg-9 col-sm-12 pb-3">
+                                Edit Profile
+                            </div>
+                            <div class="col-lg-3 col-sm-12 float-right">
+{#                                <a href="{% url 'main' %}" class="btn btn-block btn-primary">View Site</a>#}
+                            </div>
+                        </div>
+                    </h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-body">
+                                <div class="row">
+                                    {{ form | crispy }}
+                                    <div class="col-12 pt-3">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12 mb-1">
+{#                                                <a href="{% url 'reset-profile' %}"#}
+{#                                                   onclick="return confirm('Are you sure you want to reset profile?')"#}
+{#                                                   class="btn btn-block btn-light-secondary">Reset</a>#}
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <button type="submit" class="btn btn-block btn-primary me-1 mb-1"
+                                                        name="sub-button">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script>
+        $('select').selectpicker();
+    </script>
+{% endblock %}
